@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://z-tech-os.github.io/sao-vandi-saffa/sitemap.xml
