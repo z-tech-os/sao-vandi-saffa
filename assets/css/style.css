@@ -1,0 +1,478 @@
+
+/* =========================================================
+   1. THEME VARIABLES
+   ========================================================= */
+:root{
+  --dark-brown:#3f2816;
+  --dark-brown-2:#4a3926;
+  --brown:#a54e07;
+  --paper:#f8f7f5;
+  --white:#fffefb;
+  --text:#361d00;
+  --muted:#975e1c;
+  --line:#e7e3dc;
+  --soft:#f5f2ee;
+  --gold:#c49028;
+  --shadow:0 18px 45px #3326171a;
+}
+
+html[data-mode="dark"]{
+  --paper:#13100e;
+  --white:#292117;
+  --text:#f8f6f3;
+  --muted:#c5b9ae;
+  --line:#4b3d30;
+  --soft:#362a20;
+  --shadow:0 18px 45px #00000047;
+}
+
+/* =========================================================
+   2. RESET & BASE
+   ========================================================= */
+::-webkit-scrollbar{
+  background-color: var(--gold);
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--dark-brown);
+  width: 12px;
+  border-radius: 5px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth; overflow-x: hidden;}
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x: hidden;
+}
+
+img{display:block;max-width:100%;}
+
+a{color:inherit;text-decoration:none;}
+
+button,input,textarea{font:inherit;}
+
+.container{
+  width:min(1140px,92%);
+  margin:auto;
+}
+
+.section{padding:90px 0;}
+
+.section-heading{max-width:700px;margin-bottom:42px;}
+
+.eyebrow{
+  color:var(--brown);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-size:.76rem;
+}
+.section-heading h2{
+  font-family:"Libre Baskerville",serif;
+  font-size:clamp(2rem,5vw,3.4rem);
+  line-height:1.2;
+  margin-top:8px;
+}
+.section-heading p{color:var(--muted);margin-top:13px;}
+
+/* =========================================================
+   3. LOADER
+   ========================================================= */
+.loader{
+  position:fixed;inset:0;background:var(--paper);
+  display:grid;place-items:center;z-index:9999;
+  transition:.4s ease;
+}
+
+.loader.hide{opacity:0;visibility:hidden;}
+
+.loader-line{
+  width:80px;height:4px;background:var(--line);position:relative;overflow:hidden;
+}
+
+.loader-line::after{
+  content:"";position:absolute;left:-40%;top:0;width:40%;height:100%;
+  background:var(--dark-brown);animation:load 1s infinite ease-in-out;
+}
+
+@keyframes load{to{left:100%};}
+
+/* =========================================================
+   4. HEADER & NAVIGATION
+   ========================================================= */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.wordmark{
+  font-family:"Libre Baskerville",serif;
+  font-size:1.25rem;
+  font-weight:700;
+}
+.wordmark span{color:var(--brown);}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-size:.92rem;font-weight:700;color:var(--muted);}
+.nav-links a:hover,.nav-links a.active{color:var(--dark-brown);}
+html[data-mode="dark"] .nav-links a:hover,
+html[data-mode="dark"] .nav-links a.active{color:#ffffff;}
+.nav-tools{display:flex;gap:8px}
+.icon-btn,.menu-btn{
+  width:42px;height:42px;border:1px solid var(--line);
+  background:var(--white);color:var(--text);border-radius:50%;
+  cursor:pointer;
+}
+.menu-btn{display:none;}
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+.hero{
+  min-height:calc(100vh - 77px);
+  display:grid;
+  align-items:center;
+  padding:70px 0;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:80px;
+}
+.hero-copy .eyebrow{display:block;margin-bottom:18px;}
+.hero-copy h1{
+  font-family:"Libre Baskerville",serif;
+  font-size:clamp(3rem,7vw,5.9rem);
+  line-height:1.05;
+  letter-spacing:-.04em;
+}
+.hero-copy h1 span{display:block;color:var(--brown);}
+.hero-copy p{
+  max-width:650px;
+  color:var(--muted);
+  font-size:1.08rem;
+  margin:25px 0;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:13px 20px;
+  border-radius:6px;
+  border:1px solid transparent;
+  font-weight:800;
+  transition:.25s ease;
+}
+.btn-primary{background:var(--dark-brown);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);background:#23130d;}
+.btn-outline{border-color:var(--dark-brown);color:var(--dark-brown);}
+html[data-mode="dark"] .btn-outline{color:#fff;border-color:#ffffff;}
+.btn-outline:hover{background:var(--dark-brown);color:#ffffff;}
+.hero-meta{
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-top:30px;
+  color:var(--muted);
+  font-size:.88rem;
+}
+.hero-meta span{display:flex;align-items:center;gap:7px;}
+.hero-meta i{color:var(--gold);}
+.profile-frame{
+  position:relative;
+  max-width:430px;
+  margin-left:auto;
+}
+.profile-frame::before{
+  content:"";
+  position:absolute;
+  top:-18px;right:-18px;
+  width:80%;height:80%;
+  border:1px solid var(--gold);
+  z-index:0;
+}
+.profile-frame img{
+  position:relative;z-index:1;
+  width:100%;aspect-ratio:4/5;
+  object-fit:cover;
+  background:var(--soft);
+}
+.profile-caption{
+  position:absolute;
+  z-index:2;
+  left:-28px;bottom:28px;
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:15px 18px;
+  box-shadow:var(--shadow);
+}
+.profile-caption strong{display:block;font-family:"Libre Baskerville",serif;}
+.profile-caption small{color:var(--muted);}
+
+/* =========================================================
+   6. INTRODUCTION STRIP
+   ========================================================= */
+.intro-strip{
+  background:var(--dark-brown);
+  color:#fff;
+  padding:35px 0;
+}
+.intro-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:25px;
+  align-items:center;
+}
+.intro-grid p{color:#d5dbe3;}
+.intro-stat strong{display:block;font-family:"Libre Baskerville",serif;font-size:1.6rem;}
+.intro-stat span{font-size:.84rem;color:#b8c1ce;}
+
+/* =========================================================
+   7. ABOUT SECTION
+   ========================================================= */
+.about-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  align-items:start;
+}
+.about-label{
+  font-family:"Libre Baskerville",serif;
+  font-size:1.6rem;
+}
+.about-copy p{color:var(--muted);margin-bottom:16px;}
+.quote{
+  margin-top:28px;
+  padding:20px 24px;
+  border-left:3px solid var(--gold);
+  background:var(--white);
+  color:var(--text);
+  font-family:"Libre Baskerville",serif;
+}
+
+/* =========================================================
+   8. TIMELINE
+   ========================================================= */
+.timeline{border-left:1px solid var(--line);margin-left:8px;}
+.timeline-item{
+  position:relative;
+  padding:0 0 34px 35px;
+}
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  left:-7px;top:6px;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--white);
+  border:3px solid var(--brown);
+}
+.timeline-date{
+  color:var(--brown);
+  font-size:.8rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.timeline-item h3{font-family:"Libre Baskerville",serif;margin:5px 0;}
+.timeline-item p{color:var(--muted);}
+
+/* =========================================================
+   9. SKILLS
+   ========================================================= */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.skill-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:25px;
+  transition:.25s ease;
+}
+.skill-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.skill-card i{font-size:1.4rem;color:var(--brown);}
+.skill-card h3{font-family:"Libre Baskerville",serif;margin:13px 0 6px;}
+.skill-card p{color:var(--muted);font-size:.92rem;}
+
+/* =========================================================
+   10. PERSONAL VALUES
+   ========================================================= */
+.values{
+  background:var(--soft);
+}
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+}
+.value{
+  background:var(--paper);
+  padding:28px 23px;
+}
+.value strong{
+  display:block;
+  font-family:"Libre Baskerville",serif;
+  margin-bottom:8px;
+}
+.value span{color:var(--muted);font-size:.9rem;}
+
+/* =========================================================
+   11. GALLERY
+   ========================================================= */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr .9fr;
+  gap:12px;
+}
+.gallery-grid img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border:1px solid var(--line);
+}
+.gallery-grid img:first-child{height:532px;grid-row:span 2;}
+
+/* =========================================================
+   12. CONTACT
+   ========================================================= */
+.contact-box{
+  background:var(--dark-brown);
+  color:#fff;
+  padding:55px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+}
+.contact-box h2{
+  font-family:"Libre Baskerville",serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  line-height:1.15;
+}
+.contact-box p{color:#d5dbe3;margin:15px 0 25px;}
+.contact-list{display:grid;gap:15px;}
+.contact-list a{
+  display:flex;align-items:center;gap:12px;
+  color:#e7ebf0;
+}
+.contact-list i{width:22px;color:#d5b66d;}
+.contact-note{
+  padding:28px;
+  border:1px solid #4a5668;
+  align-self:center;
+}
+.contact-note h3{font-family:"Libre Baskerville",serif;margin-bottom:8px;}
+.contact-note p{margin:0;}
+
+/* =========================================================
+   13. FOOTER
+   ========================================================= */
+footer{
+  background:#20170d;
+  color:#fff;
+  padding:55px 0 22px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:35px;
+}
+.footer-brand{
+  font-family:"Libre Baskerville",serif;
+  font-size:1.2rem;
+}
+.footer-copy{color:#aeb8c5;max-width:350px;margin-top:12px;}
+.footer-col h3{font-family:"Libre Baskerville",serif;margin-bottom:12px;}
+.footer-col a{display:block;color:#aeb8c5;margin:7px 0;}
+.footer-col a:hover{color:#ffffff;}
+.socials{display:flex;gap:8px;margin-top:17px;}
+.socials a{
+  width:38px;height:38px;
+  border:1px solid #3a4656;
+  border-radius:50%;
+  display:grid;place-items:center;
+}
+.footer-bottom{
+  border-top:1px solid #293545;
+  margin-top:35px;
+  padding-top:18px;
+  color:#8f9aaa;
+  font-size:.82rem;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+/* =========================================================
+   14. REVEAL ANIMATION
+   ========================================================= */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.show{opacity:1;transform:none;}
+
+/* =========================================================
+   15. RESPONSIVE
+   ========================================================= */
+@media(max-width:950px){
+  .nav-links{
+    position:fixed;
+    top:76px;
+    right:-100%;
+    width:min(330px,88%);
+    height:calc(100vh - 76px);
+    background:var(--white);
+    flex-direction:column;
+    align-items:flex-start;
+    padding:35px;
+    border-left:1px solid var(--line);
+    transition:.3s ease;
+  }
+  .nav-links.active{right:0;}
+  .menu-btn{display:block;}
+  .hero-grid{grid-template-columns:1fr;gap:50px;}
+  .profile-frame{margin:0 auto;}
+  .intro-grid{grid-template-columns:1fr 1fr;}
+  .intro-grid p{grid-column:1/-1;}
+  .about-grid{grid-template-columns:1fr;gap:35px;}
+  .values-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .footer-col{font-size: 16px;}
+  .hero-copy p{font-size: 16px;}
+  .section{font-size: 16px;}
+}
+@media(max-width:650px){
+  .section{padding:68px 0; font-size: 14px;}
+  .hero{padding:55px 0; font-size: 14px;}
+  .hero-copy h1{font-size:3.15rem;}
+  .hero-copy p{font-size: 14px;}
+  .profile-caption{left:10px;}
+  .intro-grid{grid-template-columns:1fr;}
+  .intro-grid p{grid-column:auto;}
+  .skills-grid{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr;}
+  .gallery-grid img,.gallery-grid img:first-child{height:300px;grid-row:auto;}
+  .contact-box{grid-template-columns:1fr;padding:35px 25px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-col{font-size: 14px;}
+}
