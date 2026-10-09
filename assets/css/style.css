@@ -48,6 +48,7 @@ body{
   color:var(--text);
   line-height:1.6;
   overflow-x: hidden;
+  font-display: swap;
 }
 
 img{display:block;max-width:100%;}
@@ -155,9 +156,10 @@ html[data-mode="dark"] .nav-links a.active{color:#ffffff;}
 .hero-copy .eyebrow{display:block;margin-bottom:18px;}
 .hero-copy h1{
   font-family:"Libre Baskerville",serif;
-  font-size:clamp(3rem,7vw,5.9rem);
+  font-size:clamp(2.8rem,7vw,5.9rem);
   line-height:1.05;
   letter-spacing:-.04em;
+  font-display: swap;
 }
 .hero-copy h1 span{display:block;color:var(--brown);}
 .hero-copy p{
